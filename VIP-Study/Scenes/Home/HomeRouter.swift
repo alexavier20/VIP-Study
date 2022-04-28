@@ -8,8 +8,13 @@
 import Foundation
 import UIKit
 
+enum HomeAction {
+    case like
+}
+
 protocol HomeRouting: AnyObject {
     var viewController: UIViewController? { get set }
+    func perform(action: HomeAction)
 }
 
 final class HomeRouter {
@@ -17,5 +22,13 @@ final class HomeRouter {
 }
 
 extension HomeRouter: HomeRouting {
-    
+    func perform(action: HomeAction) {
+        switch action {
+        case .like:
+            let likeViewController = LikeViewController()
+            viewController?.navigationController?.pushViewController(likeViewController, animated: true)
+        default:
+            break
+        }
+    }  
 }

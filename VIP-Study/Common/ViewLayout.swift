@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+protocol ViewLayout: AnyObject {
+    func configureView()
+    func configureHierarchy()
+    func configureConstraints()
+}
+
+extension ViewLayout {
+    func buildLayout() {
+        configureView()
+        configureHierarchy()
+        configureConstraints()
+    }
+}

@@ -9,6 +9,9 @@ import Foundation
 
 protocol HomePresenting: AnyObject {
     var viewController: HomeDisplaying? { get set }
+    func presentUser(user: User)
+    func PresentError()
+    func presentLike()
 }
 
 final class HomePresenter {
@@ -21,6 +24,17 @@ final class HomePresenter {
 }
 
 extension HomePresenter: HomePresenting {
+    func presentUser(user: User) {
+        viewController?.InitialFetch(user: user)
+    }
+    
+    func PresentError() {
+        
+    }
+    
+    func presentLike() {
+        router.perform(action: .like)
+    }
     
 }
 

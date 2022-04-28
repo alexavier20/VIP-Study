@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct User: Decodable {
+    let login: String
+    let name: String
+    let bio: String
+    //let avatar_url: String
+}
